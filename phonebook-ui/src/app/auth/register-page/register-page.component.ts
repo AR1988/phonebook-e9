@@ -67,8 +67,13 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
           this.errorMessage = errorHandler(error);
         });
 
-    function errorHandler(error: any): string {
-      return 'Error: ' + error.statusText;
+    function errorHandler(error: any) {
+      let message;
+      if (error.status === 0)
+        message = `Error Code: ${error.status}\n. Server unavailable, try again later`;
+      else
+        message = `Error Code: ${error.status}\n. ${error.message}`;
+      return message
     }
   }
 
