@@ -12,13 +12,13 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  register(user: User) {
+  registerNewUser(user: User) {
     const url = `${this.host}api/v1/registration`;
     return this.http.post<User>(url, user);
   }
 
-  sendToken(token: string) {
-    const url = `${this.host}api/v1/validation`;
-    return this.http.post(url, token);
+  sendRequestToRegisterConfirm(token: string) {
+    const url = `${this.host}api/v1/confirmation?token=${token}`;
+    return this.http.get(url);
   }
 }
