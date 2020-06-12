@@ -6,11 +6,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-register-page',
-  templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class RegisterPageComponent implements OnInit, OnDestroy {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   submitted: boolean;
   loading: boolean;
@@ -60,7 +60,7 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
     user.email = this.form.value.email;
     user.password = this.form.value.password;
 
-    this.userSubscription = this.userService.register(user)
+    this.userSubscription = this.userService.registerNewUser(user)
       .subscribe(_ => this.router.navigate(['../activation'], {relativeTo: this.route}),
         error => {
           this.loading = false;

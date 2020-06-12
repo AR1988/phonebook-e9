@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConfirmationPageComponent } from './confirmation-page.component';
+import { PendingComponent } from './pending.component';
 
-describe('ConfirmationPageComponent', () => {
-  let component: ConfirmationPageComponent;
-  let fixture: ComponentFixture<ConfirmationPageComponent>;
+describe('SuccessPageComponent', () => {
+  let component: PendingComponent;
+  let fixture: ComponentFixture<PendingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConfirmationPageComponent ]
+      declarations: [ PendingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConfirmationPageComponent);
+    fixture = TestBed.createComponent(PendingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

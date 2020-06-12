@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {RegisterPageComponent} from './register-page.component';
+import {RegisterComponent} from './register.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {UserService} from "../../../service/user.service";
@@ -10,13 +10,13 @@ import {User} from "../../common/model/user";
 
 describe('Component: Login', () => {
 
-  let component: RegisterPageComponent;
-  let fixture: ComponentFixture<RegisterPageComponent>;
+  let component: RegisterComponent;
+  let fixture: ComponentFixture<RegisterComponent>;
   let userServiceStub: Partial<UserService>;
   let userService;
   // httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
   userServiceStub = {
-    register(user: User): Observable<User> {
+    registerNewUser(user: User): Observable<User> {
       user.email = 'mail.user@mail.com';
       user.password = 'passuser1';
       return;
@@ -38,7 +38,7 @@ describe('Component: Login', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule, FormsModule, HttpClientTestingModule],
-      declarations: [RegisterPageComponent],
+      declarations: [RegisterComponent],
       providers: [
         {provide: UserService, useValue: userServiceStub},
         {provide: Router, useValue: routerSpy},
@@ -47,7 +47,7 @@ describe('Component: Login', () => {
     });
 
     // create component and test fixture
-    fixture = TestBed.createComponent(RegisterPageComponent);
+    fixture = TestBed.createComponent(RegisterComponent);
 
     // get test component from the fixture
     component = fixture.componentInstance;

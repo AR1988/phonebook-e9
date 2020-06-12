@@ -4,11 +4,11 @@ import {UserService} from "../../../service/user.service";
 import {Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-success-page',
-  templateUrl: './success-page.component.html',
-  styleUrls: ['./success-page.component.css']
+  selector: 'app-pending',
+  templateUrl: './pending.component.html',
+  styleUrls: ['./pending.component.css']
 })
-export class SuccessPageComponent implements OnInit, OnDestroy {
+export class PendingComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(private route: ActivatedRoute,
@@ -28,7 +28,7 @@ export class SuccessPageComponent implements OnInit, OnDestroy {
     const messageSuccess = 'Your email was successfully confirmed!';
     const messageError = 'Your email cannot be verified';
 
-    this.subscription = this.userService.sendToken(token).subscribe(value => {
+    this.subscription = this.userService.sendRequestToRegisterConfirm(token).subscribe(value => {
         this.errorStat = false;
         this.confirmMessage = messageSuccess;
       },
